@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Upload Jquery Ajax Example
+    Upload file to [customPath]
   </title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
@@ -46,7 +46,9 @@
     function handleUploadFiles(files) {
       if (files.length > 0) {
         let formData = new FormData();
-
+        //Add custom path. will auto create the dir ./customPath, and upload the files to the ./customPath
+        formData.append('pathName', 'customPath');
+        
         Array.from(files).forEach(file => {
           formData.append('files', file, file.name);
         });

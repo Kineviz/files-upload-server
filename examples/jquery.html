@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>
+    Upload Jquery Ajax Example
+  </title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="description" content="">
+  <meta name="author" content="Kineviz inc.">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <style>
+    html {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      border: 4px dotted;
+      width: 98%;
+      height: 98%;
+      text-align: center;
+      line-height: 100px;
+      font-size: 30px;
+    }
+
+    .is-dragover {
+      background-color: #aaaaaa;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div> Please Drag a File to the Page</div>
+  <div> Or</div>
+
+  <input id="upload-file" type="file" multiple />
+
+  <script>
+    function handleUploadFiles(files) {
+      if (files.length > 0) {
+        let formData = new FormData();
+
+
+        Array.from(files).forEach(file => {
+          formData.append('files', file, file.name);
+        });
+
+        $.ajax({
+          type: 'POST',
+          url: '/api/upload',
+          data: formData,
+          processData: false,
+          contentType: false
+        }).done((resData) => {
+          alert(resData.message);
+        }).fail((jqXHR, textStatus, errorThrown) => {
+          alert(errorThrown);
+        });
+      }
+    }
+
+    $("#upload-file").on("change", function (e) {
+      console.log(event.target.files);
+      let files = event.target.files;
+      handleUploadFiles(files);
+
+    });
+
+    $('body').on('drag dragstart dragend dragover dragenter dragleave drop', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      })
+      .on('dragover dragenter', function () {
+        $('body').addClass('is-dragover');
+      })
+      .on('dragleave dragend drop', function () {
+        $('body').removeClass('is-dragover');
+      })
+      .on('drop', function (e) {
+        //console.log( e.originalEvent.dataTransfer.files);
+        let files = e.originalEvent.dataTransfer.files;
+        handleUploadFiles(files);
+      });
+  </script>
+
+</body>
+
+</html>
