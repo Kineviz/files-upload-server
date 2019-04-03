@@ -1,0 +1,15 @@
+# Common
+node_modules
+
+# WebStorm ignorefiles
+.idea
+
+*.pid
+
+# Windows image file caches
+Thumbs.db
+
+!readme.txt
+!readme.md
+
+!.gitignore
