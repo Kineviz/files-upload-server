@@ -88,6 +88,7 @@ server.on('listening', function () {
     console.log(`
             The Server run on http://localhost:${Port}
             Upload API http://localhost:${Port}/api/upload
+            Jquery Ajax Upload Example http://localhost:8008/example.jquery.html
             `)
 });
 
