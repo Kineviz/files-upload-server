@@ -7,7 +7,7 @@
 
 Installation via `npm`:
 
-     npm install file-server -g
+     npm install https://github.com/Kineviz/file-server.git -g
 
 This will install `file-server` globally so that it may be run from the command line.
 
