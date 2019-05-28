@@ -1,6 +1,6 @@
 {
   "name": "files-upload-server",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "./lib/file-server.js",
   "license": "MIT",
   "preferGlobal": true,
@@ -16,7 +16,9 @@
   ],
   "files": [
     "lib",
-    "bin"
+    "bin",
+    "examples",
+    "favicon.ico"
   ],
   "bin": {
     "files-upload-server":"./bin/file-server",
@@ -26,7 +28,7 @@
   "scripts": {
     "start": "node ./bin/file-server",
     "dev": "nodemon  --watch ./bin/file-server --watch ./lib/**/*   ./bin/file-server",
-    "command-test":"yarn unlink || yarn link && yarn link && file-server"
+    "test":"yarn unlink || yarn link && yarn link && files-upload-server"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
