@@ -7,14 +7,14 @@
 
 Installation via `npm`:
 
-     npm install https://github.com/Kineviz/file-server.git -g
+     npm install files-upload-server -g
 
 This will install `file-server` globally so that it may be run from the command line.
 
 
 ### Usage:
 
-     file-server [path] [options]
+     files-upload-server [path] [options]
 
 `[path]` defaults to `./upload` if the folder exists, and `./` otherwise.
 

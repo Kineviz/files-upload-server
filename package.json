@@ -1,14 +1,25 @@
 {
-  "name": "file-server",
-  "version": "1.0.0",
+  "name": "files-upload-server",
+  "version": "1.0.1",
   "main": "./lib/file-server.js",
   "license": "MIT",
   "preferGlobal": true,
+  "description": "a command-line file upload server",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Kineviz/files-upload-server.git"
+  },
+  "keywords": [
+    "file server",
+    "command line",
+    "upload server"
+  ],
   "files": [
     "lib",
     "bin"
   ],
   "bin": {
+    "files-upload-server":"./bin/file-server",
     "file-server": "./bin/file-server",
     "fs": "./bin/file-server"
   },
