@@ -1,6 +1,6 @@
 {
   "name": "files-upload-server",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "./lib/file-server.js",
   "license": "MIT",
   "preferGlobal": true,
@@ -28,7 +28,8 @@
   "scripts": {
     "start": "node ./bin/file-server",
     "dev": "nodemon  --watch ./bin/file-server --watch ./lib/**/*   ./bin/file-server",
-    "test":"yarn unlink || yarn link && yarn link && files-upload-server"
+    "test":"yarn unlink || yarn link && yarn link && files-upload-server",
+    "release": "npm publish --registry=https://registry.npmjs.org"
   },
   "dependencies": {
     "body-parser": "^1.18.3",

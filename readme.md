@@ -48,10 +48,27 @@ file-server [path] [options]
 
 ### Paths
 >Access the upload files <http://localhost:8008>  
->Upload API <http://localhost:8008/api/upload>  
+>upload files (JSON) <http://localhost:8008/api/upload>  
 >Upload API (For custom dir) <http://localhost:8008/api/upload?pathName=YourCustomPath>  
 >Upload examples <http://localhost:8008/examples>
 
+## Docker 
+
+```
+docker pull kineviz/files-upload-server:release
+
+docker stop fileServer 
+docker rm fileServer
+
+docker run -d -it --name fileServer--restart always  \
+-v ${HOME}/projects/fileServer:/data:rw \
+-p 8008:8008 \
+-e VIRTUAL_HOST=fileServer.4api.xyz \
+-e VIRTUAL_PORT=8008 \
+-e "LETSENCRYPT_HOST=fileServer.4api.xyz" \
+-e "LETSENCRYPT_EMAIL=sean@kineviz.com" \
+kineviz/files-upload-server:release
+```
 
 ## Development
 ###Install dependencies
@@ -70,4 +87,10 @@ yarn dev
 
 ```
 yarn command-test
+```
+
+### publish to npmjs.org
+
+```
+yarn release
 ```
