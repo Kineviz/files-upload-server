@@ -31,11 +31,11 @@ fi
 docker_build(){
     version="$1"
     cd "${PROJECTPATH}"
-    if [ ! -f "${PROJECTPATH}/docker/${version}.Dockerfile" ]; then 
-    echo "Can't found docker/${version}.Dockerfile file"
+    if [ ! -f "${PROJECTPATH}/Dockerfile" ]; then 
+    echo "Can't found Dockerfile file"
     exit 1
     else 
-        docker build -f ./docker/${version}.Dockerfile  -t "${PORJECTNAME}:${version}" ./ 
+        docker build -f ./Dockerfile  -t "${PORJECTNAME}:${version}" ./ 
     fi
 }
 
