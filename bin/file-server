@@ -28,7 +28,8 @@ if (argv.h || argv.help) {
 }
 
 let logger = {
-  info: !argv.s && !argv.silent ?   console.log : () => { }
+  info: console.log ,
+  log: !argv.s && !argv.silent ?   console.log : () => { }
 };
 let port = argv.p || argv.port || parseInt(process.env.PORT, 10);
 

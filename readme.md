@@ -7,14 +7,23 @@
 
 Installation via `npm`:
 
-     npm install files-upload-server -g
-
+```
+npm install files-upload-server -g
+```
 This will install `file-server` globally so that it may be run from the command line.
 
 
 ### Usage:
 
-     files-upload-server [path] [options]
+```
+files-upload-server [path] [options]
+```
+
+or 
+
+```
+file-server [path] [options]
+```
 
 `[path]` defaults to `./upload` if the folder exists, and `./` otherwise.
 
