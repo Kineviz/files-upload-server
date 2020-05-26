@@ -1,0 +1,79 @@
+Arguments: 
+  /usr/local/bin/node /Users/seanli/.yarn/bin/yarn.js
+
+PATH: 
+  /usr/local/opt/curl/bin:/Users/seanli/.yarn/bin:/Users/seanli/.config/yarn/global/node_modules/.bin:/usr/local/opt/openssl/bin:/usr/local/mysql/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/opt/X11/bin:~/.dotnet/tools:/Library/Apple/usr/bin:/usr/local/opt/curl/bin:/Users/seanli/.yarn/bin:/Users/seanli/.config/yarn/global/node_modules/.bin:/usr/local/opt/openssl/bin:/usr/local/mysql/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/local/opt/go/libexec/bin:/Users/seanli/.go/bin:/Users/seanli/Library/Python/3.6/bin:/Users/seanli/google-cloud-sdk/bin:/tools:/platform-tools:/Users/Sean/Documents/IDE/android-ndk:/Users/Sean/.gradle/wrapper/dists/gradle-2.10-all/a4w5fzrkeut1ox71xslb49gst/gradle-2.10/bin:/Users/seanli/bin:/usr/local/opt/go/libexec/bin:/Users/seanli/.go/bin:/Users/seanli/Library/Python/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/opt/X11/bin:~/.dotnet/tools:/Library/Apple/usr/bin:/usr/local/opt/curl/bin:/Users/seanli/.yarn/bin:/Users/seanli/.config/yarn/global/node_modules/.bin:/usr/local/opt/openssl/bin:/usr/local/mysql/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/local/opt/go/libexec/bin:/Users/seanli/.go/bin:/Users/seanli/Library/Python/3.6/bin:/Users/seanli/google-cloud-sdk/bin:/tools:/platform-tools:/Users/Sean/Documents/IDE/android-ndk:/Users/Sean/.gradle/wrapper/dists/gradle-2.10-all/a4w5fzrkeut1ox71xslb49gst/gradle-2.10/bin:/Users/seanli/bin:/Users/seanli/google-cloud-sdk/bin:/tools:/platform-tools:/Users/Sean/Documents/IDE/android-ndk:/Users/Sean/.gradle/wrapper/dists/gradle-2.10-all/a4w5fzrkeut1ox71xslb49gst/gradle-2.10/bin:/Users/seanli/bin
+
+Yarn version: 
+  1.22.0
+
+Node version: 
+  12.13.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: Client network socket disconnected before secure TLS connection was established
+      at connResetException (internal/errors.js:570:14)
+      at TLSSocket.onConnectEnd (_tls_wrap.js:1361:19)
+      at Object.onceWrapper (events.js:299:28)
+      at TLSSocket.emit (events.js:215:7)
+      at endReadableNT (_stream_readable.js:1183:12)
+      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+
+npm manifest: 
+  {
+    "name": "files-upload-server",
+    "version": "1.0.6",
+    "main": "./lib/file-server.js",
+    "license": "MIT",
+    "preferGlobal": true,
+    "description": "a command-line file upload server",
+    "repository": {
+      "type": "git",
+      "url": "git+ssh://git@github.com/Kineviz/files-upload-server.git"
+    },
+    "keywords": [
+      "file server",
+      "command line",
+      "upload server"
+    ],
+    "files": [
+      "lib",
+      "bin",
+      "examples",
+      "favicon.ico"
+    ],
+    "bin": {
+      "files-upload-server":"./bin/file-server",
+      "file-server": "./bin/file-server",
+      "fs": "./bin/file-server"
+    },
+    "scripts": {
+      "start": "node ./bin/file-server",
+      "dev": "nodemon ./bin/file-server --watch ./bin/file-server --watch ./lib  ",
+      "test":"yarn unlink || yarn link && yarn link && files-upload-server",
+      "release": "npm publish --registry=https://registry.npmjs.org"
+    },
+    "dependencies": {
+      "body-parser": "^1.18.3",
+      "colors": "^1.3.3",
+      "compression": "^1.7.4",
+      "cors": "^2.8.5",
+      "express": "^4.16.4",
+      "multer": "^1.4.1",
+      "optimist": "^0.6.1",
+      "portfinder": "^1.0.20",
+      "serve-index": "^1.9.1"
+    },
+    "devDependencies": {
+      "nodemon": "^1.18.10"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

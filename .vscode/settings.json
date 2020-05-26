@@ -1,0 +1,31 @@
+{
+  "search.exclude": {
+    "**/.git/**": true,
+    "**/.svn": true,
+    "**/.DS_Store": true,
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/build/**": true
+  },
+  "search.useIgnoreFiles": false,
+  "files.exclude": {
+    "**/.git/**": true,
+    "**/.svn": true,
+    "**/.DS_Store": true,
+    "**/node_modules/**": true,
+    "**/dist/**": true
+  },
+  "files.watcherExclude": {
+    "**/.git/**": true,
+    "**/.svn": true,
+    "**/.DS_Store": true,
+    "**/node_modules/**": true,
+    "**/build/**": true,
+    "**/dist/**": true,
+    "**/public/**": true,
+    "**/static/**": true
+  },
+  "files.associations": {
+    "*.js": "javascript"
+  }
+}

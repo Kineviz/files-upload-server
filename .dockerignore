@@ -2,3 +2,6 @@
 node_modules
 upload
 script
+*.log
+*.lock
+*-lock.json
