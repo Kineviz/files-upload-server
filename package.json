@@ -1,6 +1,6 @@
 {
   "name": "files-upload-server",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "main": "./lib/file-server.js",
   "license": "MIT",
   "preferGlobal": true,
