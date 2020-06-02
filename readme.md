@@ -63,12 +63,14 @@ docker rm fileServer
 docker run -d -it --name fileServer --restart always  \
 -v ${HOME}/projects/fileServer:/data:rw \
 -p 8008:8008 \
--e VIRTUAL_HOST=fileServer.4api.xyz \
--e VIRTUAL_PORT=8008 \
--e "LETSENCRYPT_HOST=fileServer.4api.xyz" \
--e "LETSENCRYPT_EMAIL=sean@kineviz.com" \
+
 kineviz/files-upload-server
 ```
+> Please add the EVN when you use ngnix-proxy docker image 
+> -e VIRTUAL_HOST=fileServer.4api.xyz \
+> -e VIRTUAL_PORT=8008 \
+> -e "LETSENCRYPT_HOST=fileServer.4api.xyz" \
+> -e "LETSENCRYPT_EMAIL=sean@kineviz.com" \
 
 ## Development
 ###Install dependencies
