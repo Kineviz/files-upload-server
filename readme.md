@@ -10,6 +10,13 @@ Installation via `npm`:
 ```
 npm install files-upload-server -g
 ```
+
+or 
+
+```
+yarn global add files-upload-server
+```  
+
 This will install `file-server` globally so that it may be run from the command line.
 
 
@@ -63,8 +70,8 @@ docker rm fileServer
 docker run -d -it --name fileServer --restart always  \
 -v ${HOME}/projects/fileServer:/data:rw \
 -p 8008:8008 \
-
 kineviz/files-upload-server
+
 ```
 > Please add the EVN when you use ngnix-proxy docker image 
 > -e VIRTUAL_HOST=fileServer.4api.xyz \
