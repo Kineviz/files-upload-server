@@ -5,16 +5,26 @@
 const portfinder = require('portfinder');
 const optimist = require('optimist');
 const colors = require('colors/safe');
-
+const packageInfo = require('./../package.json');
 const fileServer = require('../lib/file-server');
 const argv = optimist.boolean('cors').argv;
 
+console.log([
+  'alias:',
+  '  file-server',
+  '  fs',
+  '',
+  `version: ${packageInfo.version} `,
+  '',
+].join('\n'));
+
 if (argv.h || argv.help) {
   console.log([
-    'usage: file-server [path] [options]',
+    'usage: files-upload-server [path] [options]',
     '',
     'options:',
     '  -p --port    Port to use [8008]',
+    '  -V --version Version Info',
     '  -a           Address to use [0.0.0.0]',
     '  -s --silent  Suppress log messages from output',
     '',
@@ -27,9 +37,16 @@ if (argv.h || argv.help) {
   process.exit();
 }
 
+if (!!argv.V || !!argv.version) {
+  console.log([
+    'usage: files-upload-server [path] [options]',
+  ].join('\n'));
+  process.exit();
+}
+
 let logger = {
-  info: console.log ,
-  log: !argv.s && !argv.silent ?   console.log : () => { }
+  info: console.log,
+  log: !argv.s && !argv.silent ? console.log : () => { }
 };
 let port = argv.p || argv.port || parseInt(process.env.PORT, 10);
 
@@ -47,11 +64,11 @@ function listen(port) {
   let options = {
     port: port,
     host: argv.a || '0.0.0.0'
-    };
+  };
 
-   if(argv._[0]){
+  if (argv._[0]) {
     options.path = argv._[0]
-   }
+  }
 
   if (!!argv.S || !!argv.ssl) {
     options.https = {
@@ -59,6 +76,7 @@ function listen(port) {
       key: argv.K || argv.key || 'key.pem'
     };
   }
+
 
   fileServer.createServer(options, logger);
 
