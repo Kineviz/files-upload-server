@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>
+    Upload JOSN Text
+  </title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="description" content="">
+  <meta name="author" content="Kineviz inc.">
+
+
+  <style>
+    html {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      border: 4px dotted;
+      width: 98%;
+      height: 98%;
+      text-align: center;
+      line-height: 100px;
+      font-size: 30px;
+    }
+
+    .clicker {
+      cursor: pointer;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="clicker" onclick="handleUploadJSON()">Click Upload Text JSON directly </div>
+
+  <script>
+    function handleUploadJSON() {
+        let formData = new FormData();
+        //Add custom path. will auto create the dir ./customPath, and upload the files to the ./customPath
+        formData.append('pathName', 'customPath');
+
+        //the key will be auto removed when value is undefined
+       let testJSON = {"string":"aStringValue","number":100, "boolen":false, "null":null,"undefined":undefined};
+       let testJSONBlob = new Blob([JSON.stringify(testJSON)], {type: "application/json"});
+        formData.append('files',  testJSONBlob , "test.json");
+
+        const apiURL = '/api/upload';
+        return fetch(apiURL, {
+          method: "POST",
+          body: formData,
+        }).then(res => {
+          if (res.status !== 200) {
+            throw new Error(res.message || "Something went wrong on api server!");
+          }
+          return res.json()
+        }).then(resJSON => {
+          alert("successful");
+          console.log(resJSON);
+        });
+      }
+  </script>
+
+</body>
+
+</html>
