@@ -40,6 +40,18 @@
 
   <script>
 
+
+function getFilesList(accessDirPath) {
+      return fetch(`/api/list/${accessDirPath}`, {
+        method: "GET",
+      }).then(res => {
+        if (res.status !== 200) {
+          throw new Error(res.message || "Something went wrong on api server!");
+        }
+        return res.json()
+      })
+    }
+
     function checkFileExist(accessFilePath) {
       return fetch(accessFilePath, {
         method: "HEAD",
