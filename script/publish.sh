@@ -52,8 +52,8 @@ run() {
 
   case "$1" in
      release)
-     docker_build $1
-     docker_push $1
+     docker_build latest
+     docker_push latest
         ;;
     *)
         echo "$USAGE"

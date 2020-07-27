@@ -15,7 +15,7 @@ DOCKERHOST=$1
     echo "Read the docker registry host : $DOCKERHOST \n\n"
 fi
 
-docker pull ${DOCKERHOST}/${IMAGENAME}:release
+docker pull ${DOCKERHOST}/${IMAGENAME}
 
 docker stop ${PROJECTNAME} 
 docker rm ${PROJECTNAME} 
@@ -27,6 +27,6 @@ docker run -d -it --name ${PROJECTNAME}  --restart always  \
 -e VIRTUAL_PORT=8008 \
 -e "LETSENCRYPT_HOST=${PROJECTNAME}.4api.xyz" \
 -e "LETSENCRYPT_EMAIL=sean@kineviz.com" \
-${DOCKERHOST}/${IMAGENAME}:release
+${DOCKERHOST}/${IMAGENAME}
 
 echo "Please access ${PROJECTNAME}.4api.xyz"
