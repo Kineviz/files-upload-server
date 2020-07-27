@@ -41,8 +41,8 @@
   <script>
     function handleUploadJSON() {
         let formData = new FormData();
-        //Add custom path. will auto create the dir ./customPath, and upload the files to the ./customPath
-        formData.append('pathName', 'customPath');
+        //Add custom path. will auto create the dir ./YourCustomPath, and upload the files to the ./customPath
+        formData.append('pathName', 'YourCustomPath');
 
         //the key will be auto removed when value is undefined
        let testJSON = {"string":"aStringValue","number":100, "boolen":false, "null":null,"undefined":undefined};

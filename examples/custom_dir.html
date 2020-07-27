@@ -46,8 +46,8 @@
     function handleUploadFiles(files) {
       if (files.length > 0) {
         let formData = new FormData();
-        //Add custom path. will auto create the dir ./customPath, and upload the files to the ./customPath
-        formData.append('pathName', 'customPath');
+        //Add custom path. will auto create the dir ./YourCustomPath, and upload the files to the ./customPath
+        formData.append('pathName', 'YourCustomPath');
         
         Array.from(files).forEach(file => {
           formData.append('files', file, file.name);

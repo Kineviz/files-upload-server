@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>
+    Upload JOSN Text & check exist or not
+  </title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="description" content="">
+  <meta name="author" content="Kineviz inc.">
+
+
+  <style>
+    html {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      border: 4px dotted;
+      width: 98%;
+      height: 98%;
+      text-align: center;
+      line-height: 100px;
+      font-size: 30px;
+    }
+
+    .clicker {
+      cursor: pointer;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="clicker" onclick="handleUploadJSON()">Click Upload Text JSON directly </div>
+
+  <script>
+
+
+    function getFile(accessFilePath) {
+      return fetch(accessFilePath, {
+        method: "GET",
+      }).then(res => {
+        if (res.status !== 200) {
+          return false
+        }
+        return res.json()
+      })
+    }
+
+    function handleUpload(fileBlob, fileName, filePath) {
+      let formData = new FormData();
+      //Add custom path. will auto create the dir ./YourCustomPath, and upload the files to the ./customPath
+      formData.append('pathName', filePath);
+
+      formData.append('files', fileBlob, fileName);
+
+      const apiURL = '/api/upload';
+      return fetch(apiURL, {
+        method: "POST",
+        body: formData,
+      }).then(res => {
+        if (res.status !== 200) {
+          throw new Error(res.message || "Something went wrong on api server!");
+        }
+        return res.json()
+      }).then(resJSON => {
+        return resJSON
+      });
+    }
+
+    function handleUploadJSON() {
+
+      //the key will be auto removed when value is undefined
+      let testJSON = { "string": "aStringValue", "number": 100, "boolen": false, "null": null, "undefined": undefined };
+      let testJSONBlob = new Blob([JSON.stringify(testJSON)], { type: "application/json" });
+
+
+      let fileName = "test.json";
+      //relation root path
+      let filePath = 'YourCustomPath/test/';
+      //absolute site access path 
+      let fileFullPath = `/${filePath}/${fileName}`;
+
+      getFile(fileFullPath).then(resFileData => {
+        //not exsit the file
+        if (!resFileData) {
+         // console.log("try upload when not exsit file");
+          return handleUpload(testJSONBlob, fileName, filePath)
+            .then(resData => {
+              return { fileJSON: testJSON, message: "upload new file data" }
+            });
+        } else {
+         // console.log("return the exsit file data directly");
+          return { fileJSON: resFileData, message: "exsit file data" }
+        }
+      }).then(({ message, fileJSON }) => {
+        alert(message);
+        console.log("file JSON :", fileJSON , message);
+      })
+    }
+  </script>
+
+</body>
+
+</html>
