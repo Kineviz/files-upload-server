@@ -40,6 +40,16 @@
 
   <script>
 
+    function checkFileExist(accessFilePath) {
+      return fetch(accessFilePath, {
+        method: "HEAD",
+      }).then(res => {
+        if (res.status !== 200) {
+          return false
+        }
+        return true
+      })
+    }
 
     function getFile(accessFilePath) {
       return fetch(accessFilePath, {
@@ -48,8 +58,12 @@
         if (res.status !== 200) {
           return false
         }
-        return res.json()
+        return res
       })
+    }
+
+    function getFileJSON(accessFilePath) {
+      return  getFile(accessFilePath).then(res  => res.json());
     }
 
     function handleUpload(fileBlob, fileName, filePath) {
@@ -86,21 +100,21 @@
       //absolute site access path 
       let fileFullPath = `/${filePath}/${fileName}`;
 
-      getFile(fileFullPath).then(resFileData => {
+      getFileJSON(fileFullPath).then(resFileData => {
         //not exsit the file
         if (!resFileData) {
-         // console.log("try upload when not exsit file");
+          // console.log("try upload when not exsit file");
           return handleUpload(testJSONBlob, fileName, filePath)
             .then(resData => {
               return { fileJSON: testJSON, message: "upload new file data" }
             });
         } else {
-         // console.log("return the exsit file data directly");
+          // console.log("return the exsit file data directly");
           return { fileJSON: resFileData, message: "exsit file data" }
         }
       }).then(({ message, fileJSON }) => {
         alert(message);
-        console.log("file JSON :", fileJSON , message);
+        console.log("file JSON :", fileJSON, message);
       })
     }
   </script>
