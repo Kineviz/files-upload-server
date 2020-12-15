@@ -73,8 +73,8 @@ docker run -d -it --name fileServer --restart always  \
 kineviz/files-upload-server
 
 ```
-> Please add the EVN when you use ngnix-proxy docker image 
-> -e VIRTUAL_HOST=fileServer.4api.xyz \
+> Please add the EVN when you use ngnix-proxy docker image    
+> -e VIRTUAL_HOST=fileServer.4api.xyz \  
 > -e VIRTUAL_PORT=8008 \
 > -e "LETSENCRYPT_HOST=fileServer.4api.xyz" \
 > -e "LETSENCRYPT_EMAIL=sean@kineviz.com" \
