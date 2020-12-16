@@ -3,11 +3,11 @@
 'use strict';
 
 const portfinder = require('portfinder');
-const optimist = require('optimist');
+const minimist = require('minimist');
 const colors = require('colors/safe');
 const packageInfo = require('./../package.json');
 const fileServer = require('../lib/file-server');
-const argv = optimist.boolean('cors').argv;
+const argv =  minimist(process.argv.slice(2)); 
 
 console.log([
   'alias:',
