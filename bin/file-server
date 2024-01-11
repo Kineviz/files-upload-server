@@ -25,7 +25,6 @@ if (argv.h || argv.help) {
     'options:',
     '  -p --port    Port to use [8008]',
     '  -V --version Version Info',
-    '  -a           Address to use [0.0.0.0]',
     '  -s --silent  Suppress log messages from output',
     '',
     '  -S --ssl     Enable https.',
@@ -63,7 +62,7 @@ if (!port) {
 function listen(port) {
   let options = {
     port: port,
-    host: argv.a || '0.0.0.0'
+    host: ''
   };
 
   if (argv._[0]) {

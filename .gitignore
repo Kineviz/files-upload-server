@@ -11,6 +11,8 @@ Thumbs.db
 
 *.log
  
+.env
+!env.example
 !readme.txt
 !readme.md
 

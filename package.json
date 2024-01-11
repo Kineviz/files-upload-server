@@ -29,7 +29,7 @@
     "start": "node ./bin/file-server",
     "dev": "nodemon ./bin/file-server --watch ./bin/file-server --watch ./lib  ",
     "test": "yarn unlink || yarn link && yarn link && files-upload-server",
-    "release": "npm publish --registry=https://registry.npmjs.org"
+    "release": "npm  publish --registry=https://registry.npmjs.org"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
